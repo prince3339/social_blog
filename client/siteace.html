@@ -1,0 +1,137 @@
+<head>
+  <title>siteace, by Sabbir Ahmed Siddiquee</title>
+</head>
+
+<body>
+	<!-- navbar  - you will be putting the login functions here -->
+
+</body>
+
+<template name="navBar">
+    <nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        Site Ace, by Sabbir Ahmed Siddiquee
+	      </a>
+	    </div>  
+	    <div class="login-btn">
+	        {{> loginButtons}}  
+	    </div>    
+	  </div>
+	</nav>    
+</template>
+
+<template name="contentWrapper">
+    <div class="container">
+		{{> website_form}}
+		{{> website_list}}
+	</div>
+</template>
+
+<template name="website_form">
+
+{{#if currentUser}}
+	<a class="btn btn-default js-toggle-website-form" href="#">
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+	{{else}}
+    <h4>Please login or register to post new contents/vote existing contents. </h4>
+{{/if}}
+
+	<div id="website_form" class="hidden_div">
+		<form class="js-save-website-form">
+		  <div class="form-group">
+		    <label for="url">Site address</label>
+		    <input type="text" class="form-control" id="url" placeholder="http://www.mysite.com" required>
+		  </div>
+		  <div class="form-group">
+		    <label for="title">Title</label>
+		    <input type="text" class="form-control" id="title" placeholder="Mysite" required>
+		  </div>
+		    <div class="form-group">
+		    <label for="description">Description</label>
+		    <input type="text" class="form-control" id="description" placeholder="I found this site really useful for ..." required>
+		  </div>
+
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+	
+	<button id="spread" class="btn btn-danger">TEST</button>
+
+	
+</template>
+
+<!-- template that displays several website items -->
+<template name="website_list">
+	<ol>
+	{{#each websites}}
+	    {{>website_item}}
+	{{/each}}
+	</ol>
+</template>
+
+<template name="singleSite">
+    <div class="container">
+        <div class="singlesite">
+            <a href="{{url}}">{{title}}</a>
+            <p>
+                {{description}}
+            </p>
+            <span>Up votes: {{upVote}}</span> ----
+            <span>Down votes: {{downVote}}</span> ----
+            <span>Added at: {{date}}</span>
+            <br>
+            
+            {{>comments}}
+            
+            <br>
+            
+            <form id="" action="">
+                <textarea class="comment-box form-control" name="" id="comment_box" cols="60" rows="4" placeholder="Post your comment..."></textarea>  
+                <br>
+                <input id='comment_btn' class="comment_btn btn btn-success" type="submit" value="Comment">
+                
+                <a href="/" class="btn btn-default"> Back </a>  
+            </form>
+            
+            <!-- you will be putting your up and down vote buttons in here! -->
+        </div>
+    </div>
+</template>
+
+
+<template name="comments">
+    <ol>
+       {{#each Comments}}
+        <li class="bs-callout bs-callout-info single-comment">
+            
+            <h3>{{comment}}</h3>
+            <span class="pull-left">Posted by: {{ user }}</span> <span class="pull-right">Posted on : {{time}}</span>
+            <!-- you will be putting your up and down vote buttons in here! -->
+        </li>
+        {{/each}}    
+    </ol>
+</template>
+
+<!-- template that displays individual website entries -->
+<template name="website_item">
+<li class="bs-callout bs-callout-info single-post">
+	<a href="/website/{{_id}}">{{title}}</a>
+	<p>
+		{{description}}
+	</p>
+	<a href="#" class="btn btn-default js-upvote">
+		<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    </a>
+	<a href="#" class="btn btn-default js-downvote">
+		<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+	</a>
+	
+	<span>Up votes: {{upVote}}</span> ----
+	<span>Down votes: {{downVote}}</span>
+	<span class="pull-right">Added at: {{date}}</span>
+	<!-- you will be putting your up and down vote buttons in here! -->
+</li>
+</template>

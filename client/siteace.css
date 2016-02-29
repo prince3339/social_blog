@@ -1,0 +1,53 @@
+/* CSS declarations go here */
+.hidden_div{
+	display:none;
+}
+.navbar-header{
+    /* overflow: hidden; */
+}
+
+/*Login button*/
+.login-btn{
+    padding-top: 10px;
+    padding-right: 15px;
+    
+    float: right;
+}
+#login-dropdown-list{
+    left: initial;
+    right: -1px;
+}
+
+.singlesite{
+    
+}
+
+.comment-box{
+    margin-top: 20px;
+    
+    width: 100%;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-info {
+    border-left-color: #1A6FBB;
+}
+
+ol{
+    margin: 0;
+    padding: 0;
+}
+
+.single-comment{
+    overflow: hidden;
+}
+.single-post{
+    overflow: hidden;
+}
